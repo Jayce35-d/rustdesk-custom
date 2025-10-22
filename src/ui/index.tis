@@ -54,8 +54,8 @@ class ConnectStatus: Reactor.Component {
     }
 
     event click $(#setup-server) () {
-        handler.open_url("https://rustdesk.com/blog/id-relay-set/");
-    }
+        return;
+    }  }
 }
 
 function createNewConnect(id, type) {
@@ -385,19 +385,13 @@ class MyIdMenu: Reactor.Component {
     function showAbout() {
         var name = handler.get_app_name();
         msgbox("custom-nocancel-nook-hasclose", translate("About") + " " + name, "<div style='line-height: 2em'> \
-            <div>Version: " + handler.get_version() + " \
-            <div>Fingerprint: " + handler.get_fingerprint() + " \
-            <div .link .custom-event url='https://rustdesk.com/privacy.html'>" + translate("Privacy Statement") + "</div> \
-            <div .link .custom-event url='https://rustdesk.com'>" + translate("Website") + "</div> \
-	    <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; 2025 Purslane Ltd.\
-            <br />" + handler.get_license() + " \
-            <p style='font-weight: bold'>" + translate("Slogan_tip") + "</p>\
-            </div>\
-        </div>", "", function(el) {
-            if (el && el.attributes) {
-                handler.open_url(el.attributes['url']);
-            };
-        }, 400);
+                <div>Version: " + handler.get_version() + " \
+                <div>Fingerprint: " + handler.get_fingerprint() + " \
+                <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; 2025 Purslane Ltd.\
+                <br />" + handler.get_license() + " \
+                <p style='font-weight: bold'>" + translate("Slogan_tip") + "</p>\
+                </div>\
+            </div>", "", function(el) { }, 400);
     }
 
     event click $(menu#config-options>li) (_, me) {
@@ -680,34 +674,28 @@ class UpdateMe: Reactor.Component {
         </div>;
     }
 
-    event click $(#install-me) {
-        handler.open_url("https://rustdesk.com/download");
-        return;
-        if (!is_win) {
-            handler.open_url("https://rustdesk.com");
-            return;
-        }
-        var url = software_update_url + '.' + handler.get_software_ext();
-        var path = handler.get_software_store_path();
-        var onsuccess = function(md5) {
-            $(#download-percent).content(translate("Installing ..."));
-            handler.update_me(path);
-        };
-        var onerror = function(err) {
-            msgbox("custom-error", "Download Error", "Failed to download"); 
-        };
-        var onprogress = function(loaded, total) {
-            if (!total) total = 5 * 1024 * 1024;
-            var el = $(#download-percent);
-            el.style.set{display: "block"};
-            el.content("Downloading %" + (loaded * 100 / total));
-        };
-        stdout.println("Downloading " + url + " to " + path);
-        download(
-            url,
-            self.url(path),
-            onsuccess, onerror, onprogress);
+    event click $(#install-me) { return; }
+}
+
+function download(from, to, args..) {
+    var rqp = { type:#get, url: from, toFile: to };
+    var fn = 0;
+    var on = 0;
+    for( var p in args ) {
+        if( p instanceof Function ) {
+            switch(++fn) {
+                case 1: rqp.success = p; break;
+                case 2: rqp.error = p; break;
+                case 3: rqp.progress = p; break;
+            }
+        } else if( p instanceof Object ) {
+            switch(++on) {
+                case 1: rqp.params = p; break;
+                case 2: rqp.headers = p; break;
+            }
+        }  
     }
+    view.request(rqp);
 }
 
 class SystemError: Reactor.Component {
@@ -734,7 +722,7 @@ class TrustMe: Reactor.Component {
     }
     
     event click $(#help-me) {
-        handler.open_url(translate("doc_mac_permission"));
+        // 外部链接已移除
     }
 }
 

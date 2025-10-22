@@ -831,8 +831,8 @@ class _SettingsState extends State<SettingsPage> with WidgetsBindingObserver {
           title: Text(translate("About")),
           tiles: [
             SettingsTile(
-                onPressed: (context) async {
-                  await launchUrl(Uri.parse(url));
+                onPressed: (context) {
+                  showToast('外部链接已移除');
                 },
                 title: Text(translate("Version: ") + version),
                 value: Padding(
@@ -861,8 +861,7 @@ class _SettingsState extends State<SettingsPage> with WidgetsBindingObserver {
                   leading: Icon(Icons.fingerprint)),
             SettingsTile(
               title: Text(translate("Privacy Statement")),
-              onPressed: (context) =>
-                  launchUrlString('https://rustdesk.com/privacy.html'),
+              onPressed: (context) => showToast('外部链接已移除'),
               leading: Icon(Icons.privacy_tip),
             )
           ],
@@ -974,9 +973,8 @@ void showAbout(OverlayDialogManager dialogManager) {
       content: Wrap(direction: Axis.vertical, spacing: 12, children: [
         Text('Version: $version'),
         InkWell(
-            onTap: () async {
-              const url = 'https://rustdesk.com/';
-              await launchUrl(Uri.parse(url));
+            onTap: () {
+              showToast('外部链接已移除');
             },
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 8),

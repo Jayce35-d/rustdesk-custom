@@ -171,7 +171,7 @@ class _WidgetOPState extends State<WidgetOP> {
       if (_stateMsg != stateMsg || _failedMsg != failedMsg) {
         if (_url.isEmpty && url != null && url.isNotEmpty) {
           if (!urlLaunched) {
-            launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+            // External link navigation disabled
           }
           _url = url;
         }

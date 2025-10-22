@@ -434,10 +434,7 @@ class _AddressBookState extends State<AddressBook> {
         MenuEntryDivider<String>(),
       if (!gFFI.abModel.legacyMode.value && canWrite)
         getEntry(translate("ab_web_console_tip"), () async {
-          final url = await bind.mainGetApiServer();
-          if (await canLaunchUrlString(url)) {
-            launchUrlString(url);
-          }
+          // External link navigation disabled
         }),
     ];
 

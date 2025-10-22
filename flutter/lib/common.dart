@@ -1138,9 +1138,7 @@ Widget createDialogContent(String text) {
       ),
       recognizer: TapGestureRecognizer()
         ..onTap = () {
-          String linkText = match.group(0) ?? '';
-          linkText = linkText.replaceAll(RegExp(r'[.,;!?]+$'), '');
-          launchUrl(Uri.parse(linkText));
+          // External link navigation disabled
         },
     ));
     start = match.end;
@@ -1189,9 +1187,7 @@ void msgBox(SessionID sessionId, String type, String title, String text,
   }
 
   jumplink() {
-    if (link.startsWith('http')) {
-      launchUrl(Uri.parse(link));
-    }
+    // External link navigation disabled
   }
 
   if (type != "connecting" && type != "success" && !type.contains("nook")) {
@@ -3589,7 +3585,7 @@ Widget loadPowered(BuildContext context) {
     cursor: SystemMouseCursors.click,
     child: GestureDetector(
       onTap: () {
-        launchUrl(Uri.parse('https://rustdesk.com'));
+        // External link navigation disabled
       },
       child: Opacity(
           opacity: 0.5,

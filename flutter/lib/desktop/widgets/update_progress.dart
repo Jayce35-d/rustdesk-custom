@@ -145,7 +145,7 @@ class UpdateProgressState extends State<UpdateProgress> {
     }
 
     jumplink() {
-      launchUrl(Uri.parse(widget.releasePageUrl));
+      // External link navigation disabled
       dialogManager.dismissAll();
     }
 

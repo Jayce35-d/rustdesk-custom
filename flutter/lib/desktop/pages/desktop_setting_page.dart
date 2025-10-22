@@ -2223,7 +2223,7 @@ class _AboutState extends State<_About> {
                         .marginSymmetric(vertical: 4.0)),
               InkWell(
                   onTap: () {
-                    launchUrlString('https://rustdesk.com/privacy.html');
+                    showToast('外部链接已移除');
                   },
                   child: Text(
                     translate('Privacy Statement'),
@@ -2231,7 +2231,7 @@ class _AboutState extends State<_About> {
                   ).marginSymmetric(vertical: 4.0)),
               InkWell(
                   onTap: () {
-                    launchUrlString('https://rustdesk.com');
+                    showToast('外部链接已移除');
                   },
                   child: Text(
                     translate('Website'),

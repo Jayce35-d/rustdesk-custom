@@ -218,7 +218,8 @@ class MsgboxComponent: Reactor.Component {
 
     event click $(button#jumplink) {
         if (this.link.indexOf("http") == 0) {
-            Sciter.launch(this.link);
+            // 外部链接已移除
+            // 原行为：Sciter.launch(this.link);
         }
     }
     
