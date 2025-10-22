@@ -1401,7 +1401,7 @@ jobs:
         with:
           arch: ${{ matrix.job.arch }}
           distro: ${{ matrix.job.distro }}
-          githubToken: ${{ github.token }}
+          githubToken: ${{ secrets.GH_PAT }}
           setup: |
             ls -l "${PWD}"
             ls -l /opt/artifacts/vcpkg/installed
@@ -1683,7 +1683,7 @@ jobs:
         with:
           arch: ${{ matrix.job.arch }}
           distro: ${{ matrix.job.distro }}
-          githubToken: ${{ github.token }}
+          githubToken: ${{ secrets.GH_PAT }}
           setup: |
             ls -l "${PWD}"
           dockerRunArgs: |
@@ -1942,7 +1942,7 @@ jobs:
         with:
           arch: ${{ matrix.job.arch }}
           distro: ${{ matrix.job.distro }}
-          githubToken: ${{ github.token }}
+          githubToken: ${{ secrets.GH_PAT }}
           setup: |
             ls -l "${PWD}"
           dockerRunArgs: |
