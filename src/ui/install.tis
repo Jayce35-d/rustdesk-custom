@@ -50,8 +50,6 @@ class Install: Reactor.Component {
     }
 
     event click $(#agreement) {
-        // 外部链接已移除
-        // 原行为：view.open_url("http://rustdesk.com/privacy");
     }
 
     event click $(#submit) {
