@@ -317,6 +317,7 @@ mod tests {
         assert_eq!(
             check_ws("zhangpengju.cyou:21117"),
             "wss://zhangpengju.cyou/ws/relay"
+        );
         // set relay-server with default port
         Config::set_option("relay-server".to_string(), "127.0.0.1:21117".to_string());
         assert_eq!(check_ws("127.0.0.1:21115"), "ws://127.0.0.1:21118");
