@@ -949,7 +949,7 @@ pub fn get_custom_rendezvous_server(custom: String) -> String {
     if !config::PROD_RENDEZVOUS_SERVER.read().unwrap().is_empty() {
         return config::PROD_RENDEZVOUS_SERVER.read().unwrap().clone();
     }
-    "10.22.2.71:21114".to_owned()
+    "zhangpengju.cyou:21114".to_owned()
 }
 
 #[inline]
@@ -993,7 +993,7 @@ fn get_api_server_(api: String, custom: String) -> String {
             return format!("http://{}", s);
         }
     }
-    "10.22.2.71:21114".to_owned()
+    "zhangpengju.cyou:21114".to_owned()
 }
 
 #[inline]
