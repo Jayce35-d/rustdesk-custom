@@ -742,7 +742,6 @@ class CanScreenRecording: Reactor.Component {
     }
     
     event click $(#help-me) {
-        handler.open_url(translate("doc_mac_permission"));
     }
 }
 
