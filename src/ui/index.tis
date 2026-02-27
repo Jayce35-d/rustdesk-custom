@@ -769,7 +769,6 @@ class FixWayland: Reactor.Component {
     }
 
     event click $(#help-me) {
-        handler.open_url(translate("doc_fix_wayland"));
     }
 }
 
@@ -783,7 +782,6 @@ class ModifyDefaultLogin: Reactor.Component {
     }
 
     event click $(#help-me) {
-        handler.open_url(translate("doc_fix_wayland"));
     }
 }
 
